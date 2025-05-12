@@ -1,70 +1,72 @@
 :root {
-    --primary-color: #f7f7f7;
-    --text-color: #333;
-    --link-bg-instagram: #E1306C;
-    --link-bg-whatsapp: #25D366;
-    --link-bg-pix: #00B894;
-    --link-bg-wifi: #636e72;
-    --link-bg-google: #4285F4;
-    --link-color: white;
+  --primary-color: #f7f7f7;
+  --text-color: #333;
+  --link-bg-instagram: #E1306C;
+  --link-bg-whatsapp: #25D366;
+  --link-bg-pix: #00B894;
+  --link-bg-wifi: #636e72;
+  --link-bg-google: #4285F4;
+  --link-color: white;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    text-align: center;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  text-align: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
 }
 
 .header-logo {
-    max-width: 150px;
-    margin-bottom: 10px;
+  max-width: 150px;
+  margin-bottom: 10px;
 }
 
 main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .link-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 80%;
-    max-width: 500px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 80%;
+  max-width: 500px;
 }
 
 .link-list li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 15px;
-    font-size: 18px;
-    color: var(--link-color);
-    text-decoration: none;
-    border-radius: 8px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  color: var(--link-color);
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .link i {
-    margin-right: 10px;
-    font-size: 1.2em;
+  margin-right: 10px;
+  font-size: 1.2em;
 }
 
 .instagram { background-color: var(--link-bg-instagram); }
@@ -74,49 +76,83 @@ main {
 .google { background-color: var(--link-bg-google); }
 
 .link:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 footer {
-    padding: 20px;
-    background-color: #eee;
-    text-align: center;
-    font-size: 0.8em;
-    color: #888;
-    border-top: 1px solid #ddd;
+  padding: 20px;
+  background-color: #eee;
+  text-align: center;
+  font-size: 0.8em;
+  color: #888;
+  border-top: 1px solid #ddd;
 }
 
-/* Botão de copiar Pix */
 .copy-btn {
-    background-color: white;
-    color: var(--link-bg-pix);
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  background-color: var(--link-bg-pix);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .copy-btn:hover {
-    background-color: #f0f0f0;
+  background-color: #01986a;
 }
 
-/* Media Queries para Responsividade */
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: red;
+}
+
+/* Responsivo */
 @media (max-width: 600px) {
-    .link-list {
-        width: 95%;
-    }
+  .link-list {
+    width: 95%;
+  }
 
-    .header-logo {
-        max-width: 120px;
-    }
+  .header-logo {
+    max-width: 120px;
+  }
 
-    h1 {
-        font-size: 1.5em;
-    }
+  h1 {
+    font-size: 1.5em;
+  }
 
-    .link {
-        font-size: 1em;
-    }
+  .link {
+    font-size: 1em;
+  }
 }
