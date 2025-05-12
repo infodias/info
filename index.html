@@ -1,58 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFO TECNOLOGIA - Links Úteis</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>INFO TECNOLOGIA - Links Úteis</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
 <body>
-    <header>
-        <img src="logo.jpg" alt="Logo INFO TECNOLOGIA" class="header-logo">
-        <h1>INFO TECNOLOGIA - Links Úteis</h1>
-    </header>
+  <header>
+    <img src="logo.jpg" alt="Logo INFO TECNOLOGIA" class="header-logo">
+    <h1>INFO TECNOLOGIA - Links Úteis</h1>
+  </header>
 
-    <main>
-        <ul class="link-list">
-            <li><a href="https://www.instagram.com/info.tecnologia" class="link instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
-            <li><a href="https://wa.me/5528999513172" class="link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+  <main>
+    <ul class="link-list">
+      <li><a href="https://www.instagram.com/info.tecnologia" class="link instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+      <li><a href="https://wa.me/5528999513172" class="link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
 
-            <li>
-                <div class="link pix">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <span style="margin-right: 10px;">Chave Pix: 052.388.947-08</span>
-                    <button onclick="copyPixKey()" class="copy-btn">Copiar</button>
-                </div>
-            </li>
+      <li><button class="link pix" onclick="openPixModal()"><i class="fas fa-money-bill-wave"></i> Chave Pix</button></li>
 
-            <li>
-                <a href="WIFI:S:Info;T:WPA;P:Infotecnologia2022;;" class="link wifi">
-                    <i class="fas fa-wifi"></i> Conectar ao Wi-Fi
-                </a>
-            </li>
+      <li><button class="link wifi" onclick="openWifiModal()"><i class="fas fa-wifi"></i> Conectar ao Wi-Fi</button></li>
 
-            <li><a href="https://g.page/r/CWn1UqJf8xyDEAE/review" class="link google" target="_blank"><i class="fab fa-google"></i> Deixe sua avaliação no Google</a></li>
-        </ul>
-    </main>
+      <li><a href="https://g.page/r/CWn1UqJf8xyDEAE/review" class="link google" target="_blank"><i class="fab fa-google"></i> Avalie no Google</a></li>
+    </ul>
+  </main>
 
-    <footer>
-        <p>© INFO TECNOLOGIA - ESPECIALIZADA EM NOTEBOOKS - DESDE 2011</p>
-        <p>AV Carly Levy Ramos 73 - Novo Parque</p>
-        <a href="https://maps.app.goo.gl/vFfZu6Rq2iPc5PeP9" class="link google" target="_blank"><i class="fas fa-map-marker-alt"></i> Localização</a>
-    </footer>
+  <footer>
+    <p>© INFO TECNOLOGIA - ESPECIALIZADA EM NOTEBOOKS - DESDE 2011</p>
+    <p>AV Carly Levy Ramos 73 - Novo Parque</p>
+    <a href="https://maps.app.goo.gl/vFfZu6Rq2iPc5PeP9" class="link google" target="_blank"><i class="fas fa-map-marker-alt"></i> Localização</a>
+  </footer>
 
-    <script>
-        function copyPixKey() {
-            const pixKey = "052.388.947-08";
-            navigator.clipboard.writeText(pixKey).then(() => {
-                const btn = document.querySelector(".copy-btn");
-                btn.textContent = "Copiado!";
-                setTimeout(() => btn.textContent = "Copiar", 3000);
-            }).catch(err => {
-                alert("Erro ao copiar: " + err);
-            });
-        }
-    </script>
+  <!-- Modal Pix -->
+  <div id="pixModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closePixModal()">&times;</span>
+      <h2>Chave Pix (CPF)</h2>
+      <p id="pixKey">052.388.947-08</p>
+      <button onclick="copyPixKey()" class="copy-btn">Copiar chave Pix</button>
+    </div>
+  </div>
+
+  <!-- Modal Wi-Fi -->
+  <div id="wifiModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeWifiModal()">&times;</span>
+      <h2>Conectar ao Wi-Fi</h2>
+      <p>Nome da rede (SSID): <strong>Info</strong></p>
+      <p>Senha: <strong>Infotecnologia2022</strong></p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=WIFI:S:Info;T:WPA;P:Infotecnologia2022;;&size=200x200" alt="QR Code Wi-Fi" />
+      <p>Escaneie com a câmera do celular para conectar</p>
+    </div>
+  </div>
+
+  <script>
+    function copyPixKey() {
+      const pixKey = document.getElementById("pixKey").textContent;
+      navigator.clipboard.writeText(pixKey).then(() => {
+        alert("Chave Pix copiada!");
+      }).catch(err => {
+        alert("Erro ao copiar: " + err);
+      });
+    }
+
+    function openPixModal() {
+      document.getElementById("pixModal").style.display = "block";
+    }
+
+    function closePixModal() {
+      document.getElementById("pixModal").style.display = "none";
+    }
+
+    function openWifiModal() {
+      document.getElementById("wifiModal").style.display = "block";
+    }
+
+    function closeWifiModal() {
+      document.getElementById("wifiModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains("modal")) {
+        event.target.style.display = "none";
+      }
+    };
+  </script>
 </body>
 </html>
