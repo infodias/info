@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,11 +18,8 @@
     <ul class="link-list">
       <li><a href="https://www.instagram.com/info.tecnologia" class="link instagram" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
       <li><a href="https://wa.me/5528999513172" class="link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-
       <li><button class="link pix" onclick="openPixModal()"><i class="fas fa-money-bill-wave"></i> Chave Pix</button></li>
-
       <li><button class="link wifi" onclick="openWifiModal()"><i class="fas fa-wifi"></i> Conectar ao Wi-Fi</button></li>
-
       <li><a href="https://g.page/r/CWn1UqJf8xyDEAE/review" class="link google" target="_blank"><i class="fab fa-google"></i> Avalie no Google</a></li>
     </ul>
   </main>
@@ -48,7 +46,8 @@
       <span class="close" onclick="closeWifiModal()">&times;</span>
       <h2>Conectar ao Wi-Fi</h2>
       <p>Nome da rede (SSID): <strong>Info</strong></p>
-      <p>Senha: <strong>Infotecnologia2022</strong></p>
+      <p>Senha: <strong id="wifiPassword">Infotecnologia2022</strong></p>
+      <button onclick="copyWifiPassword()" class="copy-btn">Copiar senha do Wi-Fi</button>
       <img src="https://api.qrserver.com/v1/create-qr-code/?data=WIFI:S:Info;T:WPA;P:Infotecnologia2022;;&size=200x200" alt="QR Code Wi-Fi" />
       <p>Escaneie com a câmera do celular para conectar</p>
     </div>
@@ -59,6 +58,15 @@
       const pixKey = document.getElementById("pixKey").textContent;
       navigator.clipboard.writeText(pixKey).then(() => {
         alert("Chave Pix copiada!");
+      }).catch(err => {
+        alert("Erro ao copiar: " + err);
+      });
+    }
+
+    function copyWifiPassword() {
+      const wifiPassword = document.getElementById("wifiPassword").textContent;
+      navigator.clipboard.writeText(wifiPassword).then(() => {
+        alert("Senha do Wi-Fi copiada!");
       }).catch(err => {
         alert("Erro ao copiar: " + err);
       });
